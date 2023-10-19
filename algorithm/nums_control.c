@@ -12,14 +12,12 @@
 
 #include "../push_swap.h"
 
-int	stack_biggestindex(stack *stack_a)
+int	stack_biggestindex(t_stack *stack_a)
 {
-	stack	*stack_aux1;
-	int		biggest;
+	t_stack	*stack_aux1;
 	int		index;
 
 	index = 0;
-	biggest = 0;
 	stack_aux1 = stack_a;
 	while (stack_aux1)
 	{
@@ -30,9 +28,9 @@ int	stack_biggestindex(stack *stack_a)
 	return (index);
 }
 
-int	stack_biggestnum(stack *stack_a)
+int	stack_biggestnum(t_stack *stack_a)
 {
-	stack	*stack_aux1;
+	t_stack	*stack_aux1;
 	int		biggest;
 	int		index;
 
@@ -51,9 +49,9 @@ int	stack_biggestnum(stack *stack_a)
 	return (biggest);
 }
 
-int	stack_lower(stack *stack_a)
+int	stack_lower(t_stack *stack_a)
 {
-	stack	*stack_aux1;
+	t_stack	*stack_aux1;
 	int		lower;
 	int		index;
 
@@ -69,10 +67,10 @@ int	stack_lower(stack *stack_a)
 	return (lower);
 }
 
-void	index_satck(stack **stack_a)
+void	index_satck(t_stack **stack_a)
 {
-	stack	*stack_aux1;
-	stack	*stack_aux2;
+	t_stack	*stack_aux1;
+	t_stack	*stack_aux2;
 
 	stack_aux1 = (*stack_a);
 	while (stack_aux1)

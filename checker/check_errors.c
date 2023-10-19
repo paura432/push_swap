@@ -6,16 +6,16 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by pramos            #+#    #+#             */
-/*   Updated: 2023/05/24 23:30:28 by pramos           ###   ########.fr       */
+/*   Updated: 2023/09/12 17:51:07 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_doubles(stack *stack_a)
+int	check_doubles(t_stack *stack_a)
 {
-	stack	*p1;
-	stack	*p2;
+	t_stack	*p1;
+	t_stack	*p2;
 
 	p1 = stack_a;
 	while (p1 != 0)
@@ -32,7 +32,7 @@ int	check_doubles(stack *stack_a)
 	return (1);
 }
 
-int	check_errors(char **argv, stack *stack_a)
+int	check_errors(char **argv, t_stack *stack_a)
 {
 	char	**spl_arr;
 	int		i;

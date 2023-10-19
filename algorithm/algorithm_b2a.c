@@ -6,119 +6,104 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:37:49 by pramos            #+#    #+#             */
-/*   Updated: 2023/05/24 23:40:13 by pramos           ###   ########.fr       */
+/*   Updated: 2023/09/12 20:17:03 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int    second_sort(stack **stack_b, stack **stack_a)
+int	second_sort(t_stack **stack_b, t_stack **stack_a, int division)
 {
-	int i;
-	
+	int	i;
+	int	last_a;
+	int	index;
+
 	i = 0;
-	if(stack_b && (*stack_b)->index + 1 == (*stack_a)->index)
+	index = (*stack_b)->index;
+	last_a = lstlast(*stack_a)->index + 1;
+	if ((index > 0 && index == division) || index == last_a)
+	{
+		pa(stack_a, stack_b);
+		ra(stack_a);
+	}	
+	else if (stack_b && (*stack_b)->index + 1 == (*stack_a)->index)
 		pa(stack_a, stack_b);
 	else
 	{
 		rb(stack_b);
 		i++;
 	}
-	return(i);
+	return (i);
 }
 
-int    third_sort(stack **stack_b, stack **stack_a, int division)
+void	sort_chunk_2(t_stack **stack_a, t_stack **stack_b, int division, int i)
 {
-	int i;
-
-	i = 0;
-	if(((*stack_b)->index > 0 && (*stack_b)->index == division) || (*stack_b)->index == lstlast(*stack_a)->index + 1)
-	{
-		pa(stack_a, stack_b);
-		ra(stack_a);
-		i++;
-	}
-	return(i);
-}
-
-int     serch_num_b2a(stack **stack_a, stack **stack_b, int division)
-{
-	stack *stack_aux;
-	int i;
-
-	i = 0;
-	if(stack_b == NULL)
-		return(i);
-	stack_aux = (*stack_b);
-	while(stack_aux->index >= division)
-	{
-		if(stack_aux->index + 1 == (*stack_a)->index || (*stack_b)->index == lstlast(*stack_a)->index + 1)
-		{
-			i = 1;
-			break;
-		}
-		stack_aux = stack_aux->next;
-	}
-	return(i);
-}
-
-void    sort_chunk(stack **stack_a, stack **stack_b, int division)
-{
-	int i;
-
-	i = 0;
-	while(lstsize(*stack_a) < 1 + stack_biggestindex(*stack_a) && stack_b && (*stack_b)->index >= division)
-	{
-		third_sort(stack_b, stack_a, division);
-		i += second_sort(stack_b, stack_a);
-		if(lstsize(*stack_a) < 1 + stack_biggestindex(*stack_a) && serch_num_b2a(stack_a, stack_b, division) == 0 && division > 0)
-			break;
-	}
-	while(i-- > 0 && division > 0)
+	while (i-- > 0 && division > 0)
 	{
 		rrb(stack_b, 0);
-		if(stack_b && (*stack_b)->index + 1 == (*stack_a)->index)
+		if (stack_b && (*stack_b)->index + 1 == (*stack_a)->index)
 			pa(stack_a, stack_b);
-		else if((division > 0 && (*stack_b)->index == division) || (*stack_b)->index == lstlast(*stack_a)->index + 1)
+		else if (((*stack_b)->index > 0 && (*stack_b)->index == division)
+			|| (*stack_b)->index == lstlast(*stack_a)->index + 1)
 		{
 			pa(stack_a, stack_b);
 			ra(stack_a);
 		}
-		if(serch_num_b2a(stack_a, stack_b, division) == 1 && division > 0)
+		if (serch_num_b2a(stack_a, stack_b, division) == 1 && division > 0)
 			sort_chunk(stack_a, stack_b, division);
 	}
-	if(stack_b && lstlast(*stack_a)->index + 1 == (*stack_a)->index)
-		while(lstlast(*stack_a)->index + 1 == (*stack_a)->index)
+}
+
+void	sort_chunk(t_stack **stack_a, t_stack **stack_b, int division)
+{
+	int	i;
+
+	i = 0;
+	while (lstsize(*stack_a) < 1 + stack_biggestindex(*stack_a)
+		&& stack_b && (*stack_b)->index >= division)
+	{
+		i += second_sort(stack_b, stack_a, division);
+		if (lstsize(*stack_a) < 1 + stack_biggestindex(*stack_a)
+			&& serch_num_b2a(stack_a, stack_b, division) == 0 && division > 0)
+			break ;
+	}
+	sort_chunk_2(stack_a, stack_b, division, i);
+	if (stack_b && lstlast(*stack_a)->index + 1 == (*stack_a)->index)
+		while (lstlast(*stack_a)->index + 1 == (*stack_a)->index)
 			rra(stack_a, 0);
 }
 
-void    sort_b2a(stack **stack_a, stack **stack_b, int division, int i)
+void	sort_b2a_2(t_stack **stack_a, t_stack **stack_b, int division)
 {
-	int div;
-	int j;
+	division = (*stack_b)->index;
+	rrb(stack_b, 0);
+	if (stack_b && (*stack_b)->index + 1 == (*stack_a)->index)
+		pa(stack_a, stack_b);
+	else if (division > 0 && (*stack_b)->index == lstlast(*stack_a)->index + 1)
+	{
+		pa(stack_a, stack_b);
+		ra(stack_a);
+	}
+}
+
+void	sort_b2a(t_stack **stack_a, t_stack **stack_b, int division, int i)
+{
+	int	div;
+	int	j;
 
 	div = division;
 	division = division - (division - ((div / i) * i));
-	while(lstsize(*stack_a) < 1 + stack_biggestindex(*stack_a))
+	while (lstsize(*stack_a) < 1 + stack_biggestindex(*stack_a))
 	{
 		j = 0;
-		if((*stack_b)->index >= division)
-			while(stack_b && (*stack_a)->index > division)
+		if ((*stack_b)->index >= division)
+			while (stack_b && (*stack_a)->index > division)
 				sort_chunk(stack_a, stack_b, division);
 		else
 		{
-			while(j < (div / i) && (*stack_b)->index >= div / i && division != div)
-			{
-				rrb(stack_b, 0);
-				if(stack_b && (*stack_b)->index + 1 == (*stack_a)->index)
-					pa(stack_a, stack_b);
-				else if(division > 0 && (*stack_b)->index == lstlast(*stack_a)->index + 1)
-				{
-					pa(stack_a, stack_b);
-					ra(stack_a);
-				}
-				j++;
-			}
+			while (j++ < (div / i)
+				&& (*stack_b)->index >= div / i && division != div)
+				sort_b2a_2(stack_a, stack_b, division);
 		}
 		division = division - div / i;
 	}

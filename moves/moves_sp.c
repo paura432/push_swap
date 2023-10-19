@@ -6,13 +6,13 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:00:53 by pramos            #+#    #+#             */
-/*   Updated: 2023/05/24 23:14:38 by pramos           ###   ########.fr       */
+/*   Updated: 2023/10/19 22:08:53 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sa(stack *stack_a)
+void	sa(t_stack *stack_a)
 {
 	int	aux;
 	int	index;
@@ -31,7 +31,7 @@ void	sa(stack *stack_a)
 	write(1, "sa\n", 3);
 }
 
-void	sb(stack *stack_b)
+void	sb(t_stack *stack_b)
 {
 	int	aux;
 	int	index;
@@ -50,7 +50,7 @@ void	sb(stack *stack_b)
 	write(1, "sb\n", 3);
 }
 
-void	ss(stack *stack_a, stack *stack_b)
+void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	int	aux;
 
@@ -71,31 +71,40 @@ void	ss(stack *stack_a, stack *stack_b)
 	write(1, "ss\n", 3);
 }
 
-void	pa(stack **stack_a, stack **stack_b)
+void	pa(t_stack **stack_a, t_stack **stack_b)
 {
-	stack	*aux;
+	t_stack	*tmp;
 
-	aux = (*stack_b)->next;
-	if (stack_b != NULL)
-		lstadd_front(stack_a, *stack_b);
-	if (stack_b == NULL)
-	{
-		stack_b = NULL;
+	if (!*stack_b)
 		return ;
-	}
-	*stack_b = aux;
+	tmp = *stack_a;
+	*stack_a = *stack_b;
+	*stack_b = (*stack_b)->next;
+	(*stack_a)->next = tmp;
 	write(1, "pa\n", 3);
 }
 
-void	pb(stack **stack_a, stack **stack_b)
+void	pb(t_stack **stack_a, t_stack **stack_b)
 {
-	stack	*aux;
+	t_stack	*tmp;
+	t_stack	*stack_aux;
 
-	if (stack_a == NULL)
+	if (!*stack_a)
 		return ;
-	aux = (*stack_a)->next;
-	if (stack_a != NULL)
-		lstadd_front(stack_b, *stack_a);
-	*stack_a = aux;
+	stack_aux = (*stack_a)->next;
+	if (!*stack_b)
+	{
+		*stack_b = *stack_a;
+		(*stack_b)->next = NULL;
+	}
+	else
+	{
+		tmp = *stack_b;
+		*stack_b = *stack_a;
+		*stack_a = (*stack_a)->next;
+		(*stack_b)->next = tmp;
+	}
+	*stack_a = stack_aux;
 	write(1, "pb\n", 3);
 }
+

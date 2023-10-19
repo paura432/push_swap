@@ -6,13 +6,13 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:37:53 by pramos            #+#    #+#             */
-/*   Updated: 2023/05/24 23:42:54 by pramos           ###   ########.fr       */
+/*   Updated: 2023/09/12 19:59:31 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	litle_sort(stack **stack_a)
+void	litle_sort(t_stack **stack_a)
 {
 	int	biggest;
 
@@ -25,7 +25,7 @@ void	litle_sort(stack **stack_a)
 		sa(*stack_a);
 }
 
-int	check_divisions(stack *stack_a, int i)
+int	check_divisions(t_stack *stack_a, int i)
 {
 	int	divisions;
 
@@ -34,18 +34,40 @@ int	check_divisions(stack *stack_a, int i)
 	return (divisions);
 }
 
-void	init_algorithm(stack **stack_a, stack **stack_b)
+void	init_algorithm(t_stack **stack_a, t_stack **stack_b)
 {
 	int	divisions;
 	int	i;
 
 	i = 10;
 	index_satck(stack_a);
-	if (stack_biggestindex(*stack_a) + 1 > 100)
+	if (stack_biggestindex(*stack_a) + 1 > 200)
 		i = 18;
 	divisions = check_divisions(*stack_a, i);
 	sort_a2b(stack_a, stack_b, divisions, i);
 	divisions = stack_biggestindex(*stack_a) + 1;
 	litle_sort(stack_a);
 	sort_b2a(stack_a, stack_b, divisions, i);
+}
+
+int	serch_num_b2a(t_stack **stack_a, t_stack **stack_b, int division)
+{
+	t_stack	*stack_aux;
+	int		i;
+
+	i = 0;
+	if (stack_b == NULL)
+		return (i);
+	stack_aux = (*stack_b);
+	while (stack_aux->index >= division)
+	{
+		if (stack_aux->index + 1 == (*stack_a)->index
+			|| (*stack_b)->index == lstlast(*stack_a)->index + 1)
+		{
+			i = 1;
+			break ;
+		}
+		stack_aux = stack_aux->next;
+	}
+	return (i);
 }

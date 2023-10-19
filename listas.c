@@ -6,13 +6,13 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 19:26:09 by pramos            #+#    #+#             */
-/*   Updated: 2023/05/24 23:15:23 by pramos           ###   ########.fr       */
+/*   Updated: 2023/06/05 18:23:56 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-stack	*lstlast(stack *lst)
+t_stack	*lstlast(t_stack *lst)
 {
 	if (!lst)
 		return (0);
@@ -21,40 +21,46 @@ stack	*lstlast(stack *lst)
 	return (lst);
 }
 
-void	lstadd_back(stack **lst, stack *new)
+void	lstadd_back(t_stack **lst, t_stack *new)
 {
-	stack	*new1;
+	t_stack	*new1;
 
-	new1 = lstnew(new->content, new->index);
 	if (*lst)
-		lstlast(*lst)->next = new1;
+	{
+		new1 = lstlast(*lst);
+		new1->next = new;
+		new->next = NULL;
+	}
 	else
+	{
 		*lst = new;
+		(*lst)->next = NULL;
+	}
 }
 
-void	lstadd_front(stack **lst, stack *new)
+void	lstadd_front(t_stack **lst, t_stack *new)
 {
-	stack	*new1;
+	t_stack	*new1;
 
-	new1 = lstnew(new->content, new->index);
-	new1->next = *lst;
-	*lst = new1;
+	new1 = *lst;
+	*lst = new;
+	(*lst)->next = new1;
 }
 
-stack	*lstnew(int content, int index)
+t_stack	*lstnew(int content, int index)
 {
-	stack	*new;
+	t_stack	*new;
 
-	new = malloc(sizeof(stack));
+	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
-		return (0);
+		return (NULL);
 	new->index = index;
 	new->content = content;
-	new->next = 0;
+	new->next = NULL;
 	return (new);
 }
 
-int	lstsize(stack *lst)
+int	lstsize(t_stack *lst)
 {
 	int	i;
 
