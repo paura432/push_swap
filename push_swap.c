@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:45:39 by pramos            #+#    #+#             */
-/*   Updated: 2023/10/19 23:44:05 by pramos           ###   ########.fr       */
+/*   Updated: 2023/10/20 11:31:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,7 @@ int	main(int argc, char **argv)
 	if (!check_errors(argv, stack_a))
 		return (write(1, "Error\n", 6));
 	init_algorithm(&stack_a, &stack_b);
-	// print_stack(stack_a);
 	free_stack(stack_a);
 	free_stack(stack_b);
-	atexit(leaks);
 	return (0);
 }

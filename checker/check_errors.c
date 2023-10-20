@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:21 by pramos            #+#    #+#             */
-/*   Updated: 2023/09/12 17:51:07 by pramos           ###   ########.fr       */
+/*   Updated: 2023/10/20 11:29:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int	check_errors(char **argv, t_stack *stack_a)
 				return (0);
 			j++;
 		}
+		ft_free(spl_arr, j);
 		i++;
 	}
 	if (!check_doubles(stack_a))
 		return (0);
-	free (spl_arr);
 	return (1);
 }
