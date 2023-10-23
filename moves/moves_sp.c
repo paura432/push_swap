@@ -6,7 +6,7 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:00:53 by pramos            #+#    #+#             */
-/*   Updated: 2023/10/19 22:08:53 by pramos           ###   ########.fr       */
+/*   Updated: 2023/10/23 23:30:21 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,3 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 	*stack_a = stack_aux;
 	write(1, "pb\n", 3);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:45:39 by pramos            #+#    #+#             */
-/*   Updated: 2023/10/20 11:31:09 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/23 23:30:46 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ void	ft_inistack(int argc, char **argv, t_stack **stack_a)
 	}
 }
 
-void	leaks()
-{
-	system("leaks -q push_swap");
-}
+// void	leaks()
+// {
+// 	system("leaks -q push_swap");
+// }
 
 void	print_stack(t_stack *stack_a)
 {
