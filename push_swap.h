@@ -6,7 +6,7 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:58:13 by pramos            #+#    #+#             */
-/*   Updated: 2023/09/12 19:36:42 by pramos           ###   ########.fr       */
+/*   Updated: 2023/10/24 22:31:27 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,14 @@ int		main(int argc, char **argv);
 void	ft_inistack(int argc, char **argv, t_stack **stack_a);
 int		check_doubles(t_stack *stack_a);
 int		check_errors(char **argv, t_stack *stack_a);
+int		check_list(t_stack **stack_a);
 t_stack	*lstlast(t_stack *lst);
 void	lstadd_back(t_stack **lst, t_stack *new);
 void	lstadd_front(t_stack **lst, t_stack *new);
 int		lstsize(t_stack *lst);
 t_stack	*lstnew(int content, int index);
+
+int		serch_wrong(char **spl_arr);
 
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);

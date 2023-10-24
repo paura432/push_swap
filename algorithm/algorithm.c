@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:37:53 by pramos            #+#    #+#             */
-/*   Updated: 2023/10/20 10:58:56 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/24 19:01:10 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@ void	litle_sort(t_stack **stack_a)
 		rra(stack_a, 0);
 	if ((*stack_a)->index == biggest - 1)
 		sa(*stack_a);
+}
+
+int	check_list(t_stack **stack_a)
+{
+	int			index;
+	t_stack		*stack_aux;
+
+	index = 0;
+	stack_aux = *stack_a;
+	while (stack_aux->next != NULL)
+	{
+		if (stack_aux->index != index)
+			return (1);
+		index++;
+		stack_aux = stack_aux->next;
+	}
+	return (0);
 }
 
 int	check_divisions(t_stack *stack_a, int i)
@@ -43,6 +60,11 @@ void	init_algorithm(t_stack **stack_a, t_stack **stack_b)
 	index_satck(stack_a);
 	if (stack_biggestindex(*stack_a) + 1 > 200)
 		i = 18;
+	if (!check_list(stack_a))
+	{
+		write(1, "lista ordenada\n", 15);
+		exit(0);
+	}
 	divisions = check_divisions(*stack_a, i);
 	sort_a2b(stack_a, stack_b, divisions, i);
 	divisions = stack_biggestindex(*stack_a) + 1;
