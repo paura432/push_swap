@@ -6,7 +6,7 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:45:39 by pramos            #+#    #+#             */
-/*   Updated: 2023/10/24 21:53:10 by pramos           ###   ########.fr       */
+/*   Updated: 2023/10/26 18:55:06 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,30 +61,32 @@ void	leaks()
 	system("leaks -q push_swap");
 }
 
-void	print_stack(t_stack *stack_a)
-{
-	printf("\n");
-	printf("stack_a\n");
-	while (stack_a)
-	{
-		printf("num:%d\n", stack_a->content);
-		printf("index:%d\n", stack_a->index);
-		stack_a = stack_a->next;
-	}
-}
+// void	print_stack(t_stack *stack_a)
+// {
+// 	printf("\n");
+// 	printf("stack_a\n");
+// 	while (stack_a)
+// 	{
+// 		printf("num:%d\n", stack_a->content);
+// 		printf("index:%d\n", stack_a->index);
+// 		stack_a = stack_a->next;
+// 	}
+// }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	atexit(leaks);
+	// atexit(leaks);
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc < 2)
+	if (argc < 2 || argv[1][0] == '\0')
+		return (0);
+	if (!check_errors(argv))
 		return (write(1, "Error\n", 6));
 	ft_inistack(argc, argv, &stack_a);
-	if (!check_errors(argv, stack_a))
+	if (!check_doubles(stack_a))
 		return (write(1, "Error\n", 6));
 	init_algorithm(&stack_a, &stack_b);
 	free_stack(stack_a);
