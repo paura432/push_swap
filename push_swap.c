@@ -6,7 +6,7 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:45:39 by pramos            #+#    #+#             */
-/*   Updated: 2023/10/26 18:55:06 by pramos           ###   ########.fr       */
+/*   Updated: 2023/11/02 23:16:00 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	// atexit(leaks);
+	//atexit(leaks);
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2 || argv[1][0] == '\0')
