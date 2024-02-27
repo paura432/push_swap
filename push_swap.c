@@ -6,11 +6,11 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:45:39 by pramos            #+#    #+#             */
-/*   Updated: 2023/11/02 23:16:00 by pramos           ###   ########.fr       */
+/*   Updated: 2024/02/27 16:46:01 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
 void	free_stack(t_stack *stack)
 {
@@ -56,29 +56,11 @@ void	ft_inistack(int argc, char **argv, t_stack **stack_a)
 	}
 }
 
-void	leaks()
-{
-	system("leaks -q push_swap");
-}
-
-// void	print_stack(t_stack *stack_a)
-// {
-// 	printf("\n");
-// 	printf("stack_a\n");
-// 	while (stack_a)
-// 	{
-// 		printf("num:%d\n", stack_a->content);
-// 		printf("index:%d\n", stack_a->index);
-// 		stack_a = stack_a->next;
-// 	}
-// }
-
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	//atexit(leaks);
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2 || argv[1][0] == '\0')

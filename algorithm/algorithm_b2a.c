@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_b2a.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:37:49 by pramos            #+#    #+#             */
-/*   Updated: 2023/10/20 10:59:26 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/27 19:21:39 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	second_sort(t_stack **stack_b, t_stack **stack_a, int division)
 	{
 		pa(stack_a, stack_b);
 		ra(stack_a);
-	}	
+	}
 	else if (stack_b && (*stack_b)->index + 1 == (*stack_a)->index)
 		pa(stack_a, stack_b);
 	else

@@ -6,7 +6,7 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 23:37:53 by pramos            #+#    #+#             */
-/*   Updated: 2023/10/26 18:38:29 by pramos           ###   ########.fr       */
+/*   Updated: 2024/02/13 17:39:51 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	init_algorithm(t_stack **stack_a, t_stack **stack_b)
 	i = 10;
 	index_satck(stack_a);
 	if (stack_biggestindex(*stack_a) + 1 > 200)
-		i = 18;
+		i = 14;
 	if (!check_list(stack_a))
 		exit(0);
 	divisions = check_divisions(*stack_a, i);

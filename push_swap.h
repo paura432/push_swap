@@ -6,7 +6,7 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:58:13 by pramos            #+#    #+#             */
-/*   Updated: 2023/10/26 18:18:01 by pramos           ###   ########.fr       */
+/*   Updated: 2024/02/27 19:21:23 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct t_list_stack
 	int					content;
 	int					index;
 	struct t_list_stack	*next;
-}t_stack;
+}				t_stack;
 
 int		main(int argc, char **argv);
 void	ft_inistack(int argc, char **argv, t_stack **stack_a);
@@ -38,7 +38,7 @@ t_stack	*lstnew(int content, int index);
 
 int		serch_wrong(char **spl_arr);
 
-int serch_spaceonly(char **argv);
+int		serch_spaceonly(char **argv);
 
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
