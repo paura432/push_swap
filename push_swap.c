@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:45:39 by pramos            #+#    #+#             */
-/*   Updated: 2024/02/28 12:17:04 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/28 12:18:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ void	ft_inistack(int argc, char **argv, t_stack **stack_a)
 		}
 	}
 }
+
 void	ft_2nums(t_stack **stack_a)
 {
-	if((*stack_a)->content > (*stack_a)->next->content)
+	if ((*stack_a)->content > (*stack_a)->next->content)
 		ra(stack_a);
 }
 
@@ -72,7 +73,6 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!check_errors(argv))
 		return (write(1, "Error\n", 6));
-	
 	ft_inistack(argc, argv, &stack_a);
 	if (!check_doubles(stack_a))
 		return (write(1, "Error\n", 6));
