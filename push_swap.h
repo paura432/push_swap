@@ -6,7 +6,7 @@
 /*   By: pramos <pramos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:58:13 by pramos            #+#    #+#             */
-/*   Updated: 2024/02/27 19:21:23 by pramos           ###   ########.fr       */
+/*   Updated: 2024/03/07 18:01:59 by pramos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void	sort_chunk_2(t_stack **stack_a, t_stack **stack_b, int division, int i);
 void	free_stack(t_stack *stack);
 void	sort_b2a_2(t_stack **stack_a, t_stack **stack_b, int division);
 void	ft_free(char **matriz, int i);
+void	print_stack(t_stack *stack_a);
 
 #endif
